@@ -1,0 +1,155 @@
+# VSCode Python仮想環境セットアップガイド
+
+## 📋 前提条件の確認
+
+### 1. Pythonのインストール確認
+```bash
+# コマンドプロンプトまたはPowerShellで実行
+python --version
+# または
+python3 --version
+```
+
+### 2. VSCodeの拡張機能インストール
+- **Python** (Microsoft製)
+- **Python Extension Pack** (推奨)
+
+## 🔧 仮想環境の作成手順
+
+### Step 1: プロジェクトフォルダを開く
+1. VSCodeを起動
+2. `Ctrl + Shift + P` でコマンドパレットを開く
+3. `File: Open Folder` を選択
+4. `C:\Users\yukik\Desktop\excel_auto2025052` を選択
+
+### Step 2: 仮想環境の作成
+```bash
+# VSCodeのターミナルで実行（Ctrl + ` でターミナル開く）
+
+# 方法1: venvを使用（推奨）
+python -m venv venv
+
+# 方法2: python3の場合
+python3 -m venv venv
+```
+
+### Step 3: 仮想環境のアクティベート
+
+#### Windowsの場合:
+```bash
+# PowerShellの場合
+venv\Scripts\Activate.ps1
+
+# コマンドプロンプトの場合
+venv\Scripts\activate.bat
+```
+
+#### PowerShell実行ポリシーエラーの対処:
+```powershell
+# 管理者権限でPowerShellを開いて実行
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+### Step 4: VSCodeでPythonインタープリターを選択
+1. `Ctrl + Shift + P` でコマンドパレット
+2. `Python: Select Interpreter` を選択
+3. `./venv/Scripts/python.exe` を選択
+
+## 📦 必要なライブラリのインストール
+
+### 仮想環境がアクティブな状態で実行:
+```bash
+# 必要なライブラリをインストール
+pip install pandas openpyxl
+
+# インストール確認
+pip list
+
+# requirements.txtファイルの作成（推奨）
+pip freeze > requirements.txt
+```
+
+## 🚀 プロジェクトの実行手順
+
+### Step 1: Pythonファイルの作成
+```python
+# excel_list_creator.py として保存
+# 前回提供したコードをここに貼り付け
+```
+
+### Step 2: 実行方法
+```bash
+# ターミナルから実行
+python excel_list_creator.py
+
+# またはVSCodeで F5キー（デバッグ実行）
+```
+
+## 🛠️ トラブルシューティング
+
+### 仮想環境が認識されない場合:
+1. VSCode再起動
+2. `Ctrl + Shift + P` → `Python: Refresh Interpreters`
+3. 再度インタープリターを選択
+
+### pipコマンドが見つからない場合:
+```bash
+# Python -m pip を使用
+python -m pip install pandas openpyxl
+```
+
+### PowerShell実行エラーの場合:
+```bash
+# コマンドプロンプトを使用
+cmd
+venv\Scripts\activate.bat
+```
+
+## 📁 フォルダ構成例
+```
+C:\Users\yukik\Desktop\excel_auto2025052\
+├── venv/                    # 仮想環境フォルダ
+├── excel_list_creator.py    # メインプログラム
+├── requirements.txt         # 依存関係ファイル
+└── Excel名称リスト_*.xlsx   # 出力ファイル
+```
+
+## ✅ 成功の確認方法
+
+### ターミナルで以下が表示されれば成功:
+```bash
+(venv) C:\Users\yukik\Desktop\excel_auto2025052>
+```
+- `(venv)` が先頭に表示される
+- VSCode下部のステータスバーに選択したPythonインタープリターが表示
+
+### pip listの実行結果例:
+```
+Package         Version
+--------------- -------
+et-xmlfile      1.1.0
+numpy           1.24.3
+openpyxl        3.1.2
+pandas          2.0.3
+pip             23.1.2
+python-dateutil 2.8.2
+pytz            2023.3
+setuptools      67.8.0
+six             1.16.0
+tzdata          2023.3
+```
+
+## 🔄 次回の作業時
+
+### 仮想環境の再アクティベート:
+```bash
+# VSCodeでプロジェクトフォルダを開く
+# ターミナルで実行
+venv\Scripts\activate
+```
+
+### 他の人と共有する場合:
+```bash
+# requirements.txtから一括インストール
+pip install -r requirements.txt
+```
