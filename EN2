@@ -1,0 +1,221 @@
+# VSCode Python Virtual Environment Setup Guide
+
+## 📋 Prerequisites Check
+
+### 1. Verify Python Installation
+```bash
+# Run in Command Prompt or PowerShell
+python --version
+# or
+python3 --version
+```
+
+### 2. Install VSCode Extensions
+- **Python** (by Microsoft)
+- **Python Extension Pack** (recommended)
+
+## 🔧 Virtual Environment Setup Steps
+
+### Step 1: Open Project Folder
+1. Launch VSCode
+2. Press `Ctrl + Shift + P` to open Command Palette
+3. Select `File: Open Folder`
+4. Choose `C:\Users\yukik\Desktop\excel_auto2025052`
+
+### Step 2: Create Virtual Environment
+```bash
+# Run in VSCode Terminal (Ctrl + ` to open terminal)
+
+# Method 1: Using venv (recommended)
+python -m venv venv
+
+# Method 2: If using python3
+python3 -m venv venv
+```
+
+### Step 3: Activate Virtual Environment
+
+#### For Windows:
+```bash
+# PowerShell
+venv\Scripts\Activate.ps1
+
+# Command Prompt
+venv\Scripts\activate.bat
+```
+
+#### PowerShell Execution Policy Error Fix:
+```powershell
+# Run PowerShell as Administrator and execute
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+### Step 4: Select Python Interpreter in VSCode
+1. Press `Ctrl + Shift + P` for Command Palette
+2. Select `Python: Select Interpreter`
+3. Choose `./venv/Scripts/python.exe`
+
+## 📦 Installing Required Libraries
+
+### Run with active virtual environment:
+```bash
+# Install required libraries
+pip install pandas openpyxl
+
+# Verify installation
+pip list
+
+# Create requirements.txt file (recommended)
+pip freeze > requirements.txt
+```
+
+## 🚀 Project Execution Steps
+
+### Step 1: Create Python File
+```python
+# Save as excel_list_creator.py
+# Paste the previously provided code here
+```
+
+### Step 2: Execution Methods
+```bash
+# Run from terminal
+python excel_list_creator.py
+
+# Or press F5 in VSCode (debug run)
+```
+
+## 🛠️ Troubleshooting
+
+### Virtual Environment Not Recognized:
+1. Restart VSCode
+2. `Ctrl + Shift + P` → `Python: Refresh Interpreters`
+3. Re-select interpreter
+
+### pip Command Not Found:
+```bash
+# Use python -m pip
+python -m pip install pandas openpyxl
+```
+
+### PowerShell Execution Error:
+```bash
+# Use Command Prompt instead
+cmd
+venv\Scripts\activate.bat
+```
+
+## 📁 Folder Structure Example
+```
+C:\Users\yukik\Desktop\excel_auto2025052\
+├── venv/                    # Virtual environment folder
+├── excel_list_creator.py    # Main program
+├── requirements.txt         # Dependencies file
+└── Excel_File_List_*.xlsx   # Output files
+```
+
+## ✅ Success Verification
+
+### Terminal should show:
+```bash
+(venv) C:\Users\yukik\Desktop\excel_auto2025052>
+```
+- `(venv)` appears at the beginning
+- VSCode status bar shows selected Python interpreter
+
+### pip list output example:
+```
+Package         Version
+--------------- -------
+et-xmlfile      1.1.0
+numpy           1.24.3
+openpyxl        3.1.2
+pandas          2.0.3
+pip             23.1.2
+python-dateutil 2.8.2
+pytz            2023.3
+setuptools      67.8.0
+six             1.16.0
+tzdata          2023.3
+```
+
+## 🔄 For Next Work Sessions
+
+### Reactivate virtual environment:
+```bash
+# Open project folder in VSCode
+# Run in terminal
+venv\Scripts\activate
+```
+
+### For sharing with others:
+```bash
+# Install from requirements.txt
+pip install -r requirements.txt
+```
+
+## 🎯 **Key Points**
+
+### **First Things to Check:**
+1. **Python installed?** - Check with `python --version`
+2. **VSCode Python extension installed?**
+
+### **Common Errors & Solutions:**
+
+**❌ PowerShell Execution Policy Error**
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+**❌ 'python' is not recognized as internal or external command**
+- Install Python from Microsoft Store
+- Or download Python from official website
+
+**❌ pip install fails**
+```bash
+python -m pip install --upgrade pip
+python -m pip install pandas openpyxl
+```
+
+### **Workflow Summary:**
+1. Open folder in VSCode
+2. `python -m venv venv` to create virtual environment
+3. `venv\Scripts\activate` to activate
+4. `pip install pandas openpyxl` to install libraries
+5. Select Python interpreter in VSCode
+6. Run your program
+
+## 💡 Pro Tips
+
+### **Virtual Environment Benefits:**
+- ✅ **Isolated Dependencies**: Each project has its own libraries
+- ✅ **Version Control**: Avoid conflicts between different projects
+- ✅ **Clean Workspace**: Keep global Python installation clean
+- ✅ **Reproducible**: Share exact environment with requirements.txt
+
+### **VSCode Integration:**
+- 🎯 **Automatic Detection**: VSCode automatically detects virtual environments
+- 🔍 **IntelliSense**: Better code completion with proper environment
+- 🐛 **Debugging**: Seamless debugging with correct interpreter
+- 📊 **Terminal Integration**: Integrated terminal automatically activates venv
+
+### **Best Practices:**
+- 📁 **One venv per project**: Keep environments separate
+- 📝 **Use requirements.txt**: Always freeze dependencies
+- 🔄 **Regular updates**: Keep pip and libraries updated
+- 🧹 **Clean up**: Remove unused virtual environments
+
+## 🚨 Important Notes
+
+### **Before You Start:**
+- Ensure you have admin rights if needed
+- Close any running Python processes
+- Have a stable internet connection for pip installs
+
+### **If Something Goes Wrong:**
+- Delete the `venv` folder and start over
+- Check Windows PATH environment variables
+- Try using Command Prompt instead of PowerShell
+- Restart VSCode after making changes
+
+Got stuck on any specific error? Share the exact error message and I'll help you fix it!
